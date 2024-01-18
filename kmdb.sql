@@ -203,11 +203,169 @@ INSERT INTO actors (
 ('Anne Hathaway');
 
 INSERT INTO characters (
-    
-)
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    1,
+    1,
+    'Bruce Wayne'
+);
 
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    1,
+    2,
+    'Alfred'
+);
 
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    1,
+    3,
+    "Ra's Al Ghul"
+);
 
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    1,
+    4,
+    'Rachel Dawes'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    1,
+    5,
+    'Comissioner Gordon'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    2,
+    1,
+    'Bruce Wayne'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    2,
+    6,
+    'Joker'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    2,
+    7,
+    'Harvey Dent'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    2,
+    2,
+    'Alfred'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    2,
+    8,
+    'Rachel Dawes'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    3,
+    1,
+    'Bruce Wayne'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    3,
+    5,
+    'Commissioner Gordon'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    3,
+    9,
+    'Bane'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    3,
+    10,
+    'John Blake'
+);
+
+INSERT INTO characters (
+    movie_id,
+    actor_id,
+    name
+) VALUES
+(
+    3,
+    11,
+    'Selina Kyle'
+);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -217,12 +375,17 @@ INSERT INTO characters (
 -- The SQL statement for the movies output
 -- TODO!
 
+SELECT movies.title, movies.year_released, movies.mpaa_rating, studios.name from
+movies INNER JOIN studios ON movies.studio_id = studios.id;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT movies.title, actors.name, characters.name from
+movies INNER JOIN characters ON movies.id = characters.movie_id INNER JOIN actors on actors.id = characters.actor_id;
