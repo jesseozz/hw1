@@ -389,3 +389,48 @@ movies INNER JOIN studios ON movies.studio_id = studios.id;
 
 SELECT movies.title, actors.name, characters.name from
 movies INNER JOIN characters ON movies.id = characters.movie_id INNER JOIN actors on actors.id = characters.actor_id;
+
+--ADDITIONAL WORK - TEST USER STORIES
+
+-- Prints a header for the User Story Additional Tests
+.print ""
+.print 'ADDITIONAL USER STORY VALIDATION:'
+.print ""
+
+--User stories
+--
+-- - As a guest, I want to see a list of movies with the title, year released,
+--   MPAA rating, and studio information. (Done above)
+
+-- - As a guest, I want to see the movies which a single studio has produced.
+
+.print 'Movies Produced by Warner Bros. Studio'
+.print "======================================"
+.print ""
+
+SELECT movies.title from
+movies INNER JOIN studios ON movies.studio_id = studios.id
+WHERE studios.name = 'Warner Bros.';
+
+-- - As a guest, I want to see each movie's cast including each actor's
+--   name and the name of the character they portray.
+
+.print ""
+.print 'Cast of Batman Begins'
+.print "======================"
+.print ""
+
+SELECT actors.name, characters.name from
+movies INNER JOIN characters ON movies.id = characters.movie_id INNER JOIN actors on actors.id = characters.actor_id
+WHERE movies.title = 'Batman Begins';
+
+-- - As a guest, I want to see the movies which a single actor has acted in.
+
+.print ""
+.print 'Christian Bale Movies'
+.print "======================"
+.print ""
+
+SELECT movies.title from
+movies INNER JOIN characters ON movies.id = characters.movie_id INNER JOIN actors on actors.id = characters.actor_id
+WHERE actors.name = 'Christian Bale';
