@@ -33,6 +33,7 @@
 -- - A domain model, implemented via CREATE TABLE statements for each
 --   model/table. Also, include DROP TABLE IF EXISTS statements for each
 --   table, so that each run of this script starts with a blank database.
+
 -- - Insertion of "Batman" sample data into tables.
 -- - Selection of data, so that something similar to the sample "report"
 --   below can be achieved.
@@ -100,18 +101,113 @@
 -- The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 -- Turns column mode on but headers off
+
 .mode column
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS characters;
+
 -- Create new tables, according to your domain model
 -- TODO!
+
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  year_released INTEGER,
+  mpaa_rating TEXT,
+  studio_id INTEGER
+);
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE actors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE characters (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  movie_id INTEGER,
+  actor_id INTEGER
+);
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+
+INSERT INTO studios (
+    name
+) VALUES(
+    'Warner Bros.'
+);
+
+INSERT INTO movies (
+    title,
+    year_released,
+    mpaa_rating,
+    studio_id
+) VALUES(
+    'Batman Begins',
+    2005,
+    'PG-13',
+    1
+);
+
+INSERT INTO movies (
+    title,
+    year_released,
+    mpaa_rating,
+    studio_id
+) VALUES(
+    'The Dark Knight',
+    2008,
+    'PG-13',
+    1
+);
+
+INSERT INTO movies (
+    title,
+    year_released,
+    mpaa_rating,
+    studio_id
+) VALUES(
+    'The Dark Knight Rises',
+    2012,
+    'PG-13',
+    1
+);
+
+INSERT INTO actors (
+    name
+) VALUES
+('Christian Bale'),
+('Michael Caine'),
+('Liam Neeson'), 
+('Katie Holmes'),
+('Gary Oldman'),    
+('Heath Ledger'),
+('Aaron Eckhart'),
+('Maggie Gyllenhaal'),
+('Tom Hardy'),
+('Joseph Gordon-Levitt'),
+('Anne Hathaway');
+
+INSERT INTO characters (
+    
+)
+
+
+
 
 -- Prints a header for the movies output
 .print "Movies"
